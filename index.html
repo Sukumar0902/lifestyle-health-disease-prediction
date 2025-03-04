@@ -1,0 +1,233 @@
+{% extends "material/base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='imgs/lifestyle-diseases-are-fatal-01.jpg') }}"),
+                          url("{{ url_for('static', filename='imgs/StrokeRiskFactors_Infographic-1-1024x1016.jpg') }}"),
+                          url("{{ url_for('static', filename='imgs/lifestyle-diseases.jpg') }}"),
+                          url("{{ url_for('static', filename='imgs/lifestyle-diseases-are-fatal-01.jpg') }}");
+        background-size: 50% 50%; /* Each image takes half the width and height */
+        background-position: top left, top right, bottom left, bottom right;
+        background-repeat: no-repeat;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .showcase {
+        position: relative;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        color: white;
+        overflow: hidden;
+    }
+    
+    .showcase::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://savvycomsoftware.com/wp-content/uploads/2024/03/what-are-healthcare-solutions-4.png') no-repeat center center/cover;
+        opacity: 0.6; /* Adjust opacity for faded effect */
+        z-index: -1;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: black;
+    }
+
+    .btn {
+        background-color: #ff6b6b;
+        border-radius: 25px;
+        padding: 4px 18px;
+        font-size: 1.2rem;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #ff4b4b;
+    }
+
+    .card-panel {
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    input, select {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .section-signup {
+        margin-top: 30px;
+    }
+
+    .btn-light {
+        background-color: white;
+        color: #ff6b6b;
+        border: 1px solid #ff6b6b;
+        transition: 0.3s;
+    }
+
+    .btn-light:hover {
+        background-color: #ff6b6b;
+        color: white;
+    }
+    .image-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .image-container img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+</style>
+<div class="showcase container">
+    <div class="row center">
+        <div class="col s12">
+            <h2>Lifestyle Disease Prediction</h2>
+            
+            <a href="{{ url_for('index') }}" class="btn">Reset</a>
+            <a href="{{ url_for('preview') }}" class="btn">View Dataset</a>
+        </div>
+    </div>
+</div>
+
+
+<section class="section section-signup">
+    <div class="container">
+        <div class="row">
+            <!-- Form Section -->
+            <div class="col s12 m7">
+                <div class="card-panel ">
+                    <form action="{{ url_for('analyze') }}" method="POST">
+                        <!-- Age -->
+                        <div class="input-field">
+                            <input type="number" id="age_input" name="age_input" min="0" step="1" value="{{ age_input }}" required>
+                            <label for="age_input">Age</label>
+                        </div>
+                        
+                        <!-- BMI -->
+                        <div class="input-field">
+                            <input type="number" id="bmi_input" name="bmi_input" step="0.1" value="{{ bmi_input }}" required>
+                            <label for="bmi_input">BMI</label>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="input-field">
+                            <select id="gender" name="gender_choice" value="{{ gender_choice }}" required>
+                                <option value="1" {% if gender_choice == '1' %}selected{% endif %}>Male</option>
+                                <option value="0" {% if gender_choice == '0' %}selected{% endif %}>Female</option>
+                            </select>
+                            <label for="gender">Gender</label>
+                        </div>
+
+                        <!-- Sleep -->
+                        <div class="input-field">
+                            <select id="sleep" name="sleep_input" value="{{ sleep_input }}" required>
+                                <option value="1" {% if sleep_input == '1' %}selected{% endif %}>Less than 4 hours</option>
+                                <option value="2" {% if sleep_input == '2' %}selected{% endif %}>4 to 10 hours</option>
+                                <option value="3" {% if sleep_input == '3' %}selected{% endif %}>Above 10 hours</option>
+                            </select>
+                            <label for="sleep">Sleep Hours</label>
+                        </div>
+
+                        <!-- Junk Food -->
+                        <div class="input-field">
+                            <select id="junk" name="junk_input" value="{{ junk_input }}" required>
+                                <option value="0" {% if junk_input == '0' %}selected{% endif %}>No</option>
+                                <option value="1" {% if junk_input == '1' %}selected{% endif %}>Yes</option>
+                            </select>
+                            <label for="junk">Junk Food</label>
+                        </div>
+
+                        <!-- Smoking -->
+                        <div class="input-field">
+                            <select id="smoking" name="smoking_input" value="{{ smoking_input }}" required>
+                                <option value="0" {% if smoking_input == '0' %}selected{% endif %}>No</option>
+                                <option value="1" {% if smoking_input == '1' %}selected{% endif %}>Yes</option>
+                            </select>
+                            <label for="smoking">Smoking</label>
+                        </div>
+
+                        <!-- Exercise -->
+                        <div class="input-field">
+                            <select id="exercise" name="exercise_input" value="{{ exercise_input }}" required>
+                                <option value="0" {% if exercise_input == '0' %}selected{% endif %}>No</option>
+                                <option value="1" {% if exercise_input == '1' %}selected{% endif %}>Yes</option>
+                            </select>
+                            <label for="exercise">Exercise</label>
+                        </div>
+
+                        <!-- Drinking -->
+                        <div class="input-field">
+                            <select id="drinking" name="drinking_input" value="{{ drinking_input }}" required>
+                                <option value="0" {% if drinking_input == '0' %}selected{% endif %}>No</option>
+                                <option value="1" {% if drinking_input == '1' %}selected{% endif %}>Yes</option>
+                            </select>
+                            <label for="drinking">Drinking</label>
+                        </div>
+
+                        <!-- Submit and Reset -->
+                        <input type="submit" value="Predict" class="btn ">
+                        <input type="reset" value="Clear" class="btn ">
+                    </form>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div class="col s12 m5">
+                <div class="card-panel ">
+                    <h3>User Inputs:</h3>
+                    <p>Age: {{ age_input }}</p>
+                    <p>BMI: {{ bmi_input }}</p>
+                    <p>Gender: {{ gender_choice }}</p>
+                    <p>Sleep: {{ sleep_input }}</p>
+                    <p>Junk Food: {{ junk_input }}</p>
+                    <p>Smoking: {{ smoking_input }}</p>
+                    <p>Exercise: {{ exercise_input }}</p>
+                    <p>Drinking: {{ drinking_input }}</p>
+                </div>
+                <div class="card-panel ">
+                    <h5>Prediction:</h5>
+                    {% if result_prediction %}
+                    <p>{{ result_prediction }}</p>
+                    {% else %}
+                    <p>No prediction available.</p>
+                    {% endif %}
+                    <div>
+                        <a href="https://www.maxhealthcare.in/find-a-doctor" class="btn btn-light">Find a doctor</a>
+                        <br></br>
+                        <a href="https://www.maxhealthcare.in/book-an-appointment" class="btn btn-light">Book an Appointment</a>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('select').formSelect();
+    });
+</script>
+{% endblock %}

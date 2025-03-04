@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypertension Information</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Custom Fonts */
+        .heading { font-family: 'Poppins', sans-serif; }
+        .subheading { font-family: 'Merriweather', serif; }
+        .body-text { font-family: 'Open Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-50 to-pink-100 min-h-screen flex items-center justify-center p-6">
+
+    <div class="bg-white max-w-4xl p-8 rounded-3xl shadow-2xl text-gray-800">
+        <h1 class="heading text-4xl font-bold text-center text-red-600 mb-6">🩸 Hypertension (High Blood Pressure)</h1>
+
+        <!-- What is Hypertension? -->
+        <div class="mb-6 p-6 rounded-xl shadow-lg bg-red-100">
+            <h3 class="subheading text-2xl font-semibold text-red-700 flex items-center">
+                <span class="mr-2">💡</span> What is Hypertension?
+            </h3>
+            <p class="body-text mt-2 text-gray-700 leading-relaxed">
+                Hypertension, also known as high blood pressure, is a condition where the force of blood against artery walls remains elevated. 
+                If untreated, it can lead to heart disease, stroke, and kidney failure.
+            </p>
+        </div>
+
+        <!-- Causes of Hypertension -->
+        <div class="mb-6 p-6 rounded-xl shadow-lg bg-red-200">
+            <h3 class="subheading text-2xl font-semibold text-red-800 flex items-center">
+                <span class="mr-2">⚠️</span> Causes of Hypertension
+            </h3>
+            <ul class="body-text mt-2 text-gray-700 list-disc list-inside">
+                <li>🍟 Unhealthy diet (excess salt, processed foods)</li>
+                <li>🚶 Lack of physical activity</li>
+                <li>⚖️ Obesity or being overweight</li>
+                <li>🍺 Excessive alcohol and tobacco use</li>
+                <li>🧬 Genetics and family history</li>
+                <li>😴 Stress and lack of sleep</li>
+                <li>💉 Chronic conditions (diabetes, kidney disease)</li>
+            </ul>
+        </div>
+
+        <!-- Symptoms of Hypertension -->
+        <div class="mb-6 p-6 rounded-xl shadow-lg bg-red-300">
+            <h3 class="subheading text-2xl font-semibold text-red-900 flex items-center">
+                <span class="mr-2">🚨</span> Symptoms of Hypertension
+            </h3>
+            <p class="body-text mt-2 text-gray-700 leading-relaxed">
+                Hypertension is often called the "silent killer" as symptoms appear only when complications arise. Possible symptoms include:
+            </p>
+            <ul class="body-text mt-2 text-gray-700 list-disc list-inside">
+                <li>⚡ Severe headaches</li>
+                <li>🌫️ Dizziness or blurred vision</li>
+                <li>❤️ Chest pain</li>
+                <li>😤 Shortness of breath</li>
+                <li>💧 Nosebleeds (in extreme cases)</li>
+            </ul>
+        </div>
+
+        <!-- Prevention and Management -->
+        <div class="mb-6 p-6 rounded-xl shadow-lg bg-green-200">
+            <h3 class="subheading text-2xl font-semibold text-green-800 flex items-center">
+                <span class="mr-2">🛡️</span> Prevention and Management
+            </h3>
+            <ul class="body-text mt-2 text-gray-700 list-disc list-inside">
+                <li>🥗 Eat a balanced diet with less salt</li>
+                <li>🏃 Exercise regularly (at least 30 min daily)</li>
+                <li>⚖️ Maintain a healthy weight</li>
+                <li>🚭 Avoid smoking and excessive alcohol</li>
+                <li>🧘 Manage stress with relaxation techniques</li>
+                <li>📊 Monitor blood pressure regularly</li>
+            </ul>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="{{ url_for('home_redirect') }}" class="bg-red-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-red-600 transition duration-300">
+                🔙 Back to Home
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

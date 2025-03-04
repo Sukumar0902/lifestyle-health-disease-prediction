@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-yellow-100 to-orange-200 flex items-center justify-center min-h-screen p-6">
+
+    <div class="bg-white max-w-3xl p-8 rounded-3xl shadow-xl text-gray-800">
+        <h1 class="text-4xl font-bold text-center text-orange-600 mb-6">Diabetes</h1>
+
+        <!-- What is Diabetes? -->
+        <div class="mb-6">
+            <h3 class="text-2xl font-semibold text-yellow-700">What is Diabetes?</h3>
+            <p class="mt-2 text-gray-600 leading-relaxed">
+                Diabetes is a chronic condition that occurs when the body cannot properly process blood sugar (glucose), leading to high blood sugar levels. 
+                If left uncontrolled, it can cause serious complications like heart disease, kidney failure, and nerve damage.
+            </p>
+        </div>
+
+        <!-- Types of Diabetes -->
+        <div class="mb-6">
+            <h3 class="text-2xl font-semibold text-yellow-700">Types of Diabetes</h3>
+            <ul class="mt-2 text-gray-600 list-disc list-inside">
+                <li><strong>Type 1 Diabetes:</strong> Autoimmune condition where the body attacks insulin-producing cells.</li>
+                <li><strong>Type 2 Diabetes:</strong> Insulin resistance due to lifestyle factors or genetics.</li>
+                <li><strong>Gestational Diabetes:</strong> Develops during pregnancy and may increase future risk of Type 2 diabetes.</li>
+            </ul>
+        </div>
+
+        <!-- Symptoms of Diabetes -->
+        <div class="mb-6">
+            <h3 class="text-2xl font-semibold text-yellow-700">Symptoms of Diabetes</h3>
+            <ul class="mt-2 text-gray-600 list-disc list-inside">
+                <li>Increased thirst and frequent urination</li>
+                <li>Extreme fatigue</li>
+                <li>Unexplained weight loss</li>
+                <li>Slow-healing wounds</li>
+                <li>Blurred vision</li>
+                <li>Frequent infections</li>
+            </ul>
+        </div>
+
+        <!-- Prevention and Management -->
+        <div class="mb-6">
+            <h3 class="text-2xl font-semibold text-yellow-700">Prevention and Management</h3>
+            <ul class="mt-2 text-gray-600 list-disc list-inside">
+                <li>Eat a balanced, low-sugar diet</li>
+                <li>Exercise regularly</li>
+                <li>Monitor blood sugar levels</li>
+                <li>Avoid smoking and excessive alcohol consumption</li>
+                <li>Manage stress and get adequate sleep</li>
+                <li>Take medications or insulin as prescribed</li>
+            </ul>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="{{ url_for('home_redirect') }}" class="bg-orange-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-orange-600 transition duration-300">
+                Back to Home
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
